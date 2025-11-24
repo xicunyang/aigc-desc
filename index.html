@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIGC Chronicles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Outfit', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        overflow: hidden; /* Prevent scrollbars from effects */
+      }
+      h1, h2, h3, .font-display {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      
+      /* --- 3D RETRO GRID --- */
+      .retro-perspective {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+      .retro-grid {
+        position: absolute;
+        width: 300%;
+        height: 200%;
+        left: -100%;
+        top: 0%;
+        background-image: 
+          linear-gradient(rgba(16, 185, 129, 0.4) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(16, 185, 129, 0.4) 2px, transparent 2px);
+        background-size: 100px 100px;
+        background-position: 0 0;
+        transform: rotateX(60deg);
+        transform-origin: 50% 0;
+        animation: gridMove 2s linear infinite;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%);
+      }
+      @keyframes gridMove {
+        0% { transform: rotateX(60deg) translateY(0); }
+        100% { transform: rotateX(60deg) translateY(100px); }
+      }
+
+      /* --- LIQUID FLUID --- */
+      .liquid-blob {
+        filter: blur(80px);
+        mix-blend-mode: screen;
+        animation: fluidMove 10s ease-in-out infinite alternate;
+      }
+      @keyframes fluidMove {
+        0% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(10%, -10%) scale(1.2); }
+        66% { transform: translate(-5%, 5%) scale(0.8); }
+        100% { transform: translate(0, 0) scale(1); }
+      }
+
+      /* --- GENERAL UTILS --- */
+      .animate-pulse-fast {
+        animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      
+      @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+
+      .scanline-overlay {
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
